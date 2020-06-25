@@ -8,16 +8,16 @@ env:
   - COVERAGE=0.057 BUILD_TARGET=./monolithic/ui
   global:
   - DOCKER_LOGIN=tamigit491
-  - secure: "Vlv4qFT5ZLoix1MF0n6OxmUdOro7OianE4XCKdjdQm4XDK1b2fEgqlDyDKgVSI2EcLIX5m6KQuvlmprqqHiK5eBdzNRFHlOl+bugn0qAnDZTSnukDEJAs7e0+7+KXDyRbFM13uegpk0wuUPcfQf1WeVNYMLe9cYStzAbRAF1Sfv+8vQncELmJyin2pwG9N89RKm6Q97lFoOHWwVjg4GieSBXkk38UWKGT9LkXgSGwapw2h+omgUwlnko1EpjS2dZetFao54XoN3QuyWvKf/+zratIirPB9jmYvamgK3/lCg50l3AoCwrXsJPMNVe7Wx6isLAn8aMTLK903c5ipnA7ZxxhpHIzChHmjafBnhqJ83UEc7813GfBj+xYGy5AOJ/ufVny5xhu3Mw2mgbVaIs0QCxFbyxwCVtmHROZGf0kZ2hgj6/XQ/2ySzS0eRb95aOY3aNCpXuWwwLKQd5UW9HUYFpp1qxVPxCEW9I3U3oU8Xg5AVDPbs5b7HLnOPLvubmII8d2ZYSczq4tBQxUaJnjAZF2EDGlgvqPywKcjPv3dAYDesn9oMTDWFX9XKikJwIa+U/jvZfBWT8yJO3X9UA0JimoQRWcCXaUKgoohFCtRhhYLNcFos5Y4nRFxSJgjDIDMyo1IQ2Wk6OxOAP0OaTQekp17Fze/Zg0AX4pE3tkws="
+  - DOCKER_PASSWORD="29aee4de-badf-4df8-9f20-5712c7320d52"
+#  - secure: Vlv4qFT5ZLoix1MF0n6OxmUdOro7OianE4XCKdjdQm4XDK1b2fEgqlDyDKgVSI2EcLIX5m6KQuvlmprqqHiK5eBdzNRFHlOl+bugn0qAnDZTSnukDEJAs7e0+7+KXDyRbFM13uegpk0wuUPcfQf1WeVNYMLe9cYStzAbRAF1Sfv+8vQncELmJyin2pwG9N89RKm6Q97lFoOHWwVjg4GieSBXkk38UWKGT9LkXgSGwapw2h+omgUwlnko1EpjS2dZetFao54XoN3QuyWvKf/+zratIirPB9jmYvamgK3/lCg50l3AoCwrXsJPMNVe7Wx6isLAn8aMTLK903c5ipnA7ZxxhpHIzChHmjafBnhqJ83UEc7813GfBj+xYGy5AOJ/ufVny5xhu3Mw2mgbVaIs0QCxFbyxwCVtmHROZGf0kZ2hgj6/XQ/2ySzS0eRb95aOY3aNCpXuWwwLKQd5UW9HUYFpp1qxVPxCEW9I3U3oU8Xg5AVDPbs5b7HLnOPLvubmII8d2ZYSczq4tBQxUaJnjAZF2EDGlgvqPywKcjPv3dAYDesn9oMTDWFX9XKikJwIa+U/jvZfBWT8yJO3X9UA0JimoQRWcCXaUKgoohFCtRhhYLNcFos5Y4nRFxSJgjDIDMyo1IQ2Wk6OxOAP0OaTQekp17Fze/Zg0AX4pE3tkws=
 install:
-- "./gradlew clean jar"
+- ./gradlew clean jar
 script:
-- "./gradlew -p $BUILD_TARGET check"
+- ./gradlew -p $BUILD_TARGET check
 after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
 deploy:
   provider: script
-  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\"
-    --password-stdin ;"
+  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin ;"
   on:
     all_branches: true
