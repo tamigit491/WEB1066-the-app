@@ -6,5 +6,5 @@ jdk:
 install:
   - ./gradlew clean jar
 
-after_success:
+script:
   - echo 'testing comming soon'
