@@ -1,18 +1,18 @@
 language: java
 jdk:
 - openjdk8
-- openjdk9
+#- openjdk9
 services:
 - docker
 env:
   matrix:
     - COVERAGE=0.057 BUILD_TARGET=./monolithic/ui
-    - COVERAGE=0.148 BUILD_TARGET=./monolithic/service/cart
-    - COVERAGE=0.0 BUILD_TARGET=./monolithic/service/user
-    - COVERAGE=0.36 BUILD_TARGET=./monolithic/repository/order
-    - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/cart
-    - COVERAGE=0.124 BUILD_TARGET=./monolithic/repository/product
-    - COVERAGE=0.318 BUILD_TARGET=./monolithic/repository/user
+#    - COVERAGE=0.148 BUILD_TARGET=./monolithic/service/cart
+#    - COVERAGE=0.0 BUILD_TARGET=./monolithic/service/user
+#    - COVERAGE=0.36 BUILD_TARGET=./monolithic/repository/order
+#    - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/cart
+#    - COVERAGE=0.124 BUILD_TARGET=./monolithic/repository/product
+#    - COVERAGE=0.318 BUILD_TARGET=./monolithic/repository/user
   global:
   - DOCKER_LOGIN=tamigit491
   - secure: Zdqjo9XrTJsFXhocSgRYMgR5GXEmK14TrzCMPRaNSfEU05gM5OQGF/dg7j8jM3J6pdw54i7aXtw0qrfziqyD+GANAG/i3R/RTV7YlA2KFf/EuczfK6ukhRI75WPp5KUawr3W4nBfI1eYFFV4OGBDuV6eFkD1URoWimXBR0CFl6aMjYE68VRE6H9wMSIM/1q4RA9RJRvNz/RkHM+WN2lolT13MjMfiZgx3UrVt5igEw5SAoxmbGmhyOcVTa9qqJ4ujaY02onFydHakE4gt66Kjt51mHAM0oB4o4etT4F4w05unjQq2w9pkCINWqcViQDR8NVVLE0A3O20/mW1meiPZnsRV41iYTqNAvVTm0qowA9xZhE+xMSK1UXcSoH+bH02u/X5BnCzSz3QMyRMAWTLjn0SdlcMH5ylSPagGx+AbNsDn6KMNEziEBIo91ssyB8pA2McHp6GcWy4aRoJw245TO16ok+0z3PtHDWTAM+gtX0oDt0qGeAO9q8Cuyru/fJpqWpncWW5MDLxK9lQPUatn++udXbn9i/0LKKi+5THm3FjNCPya6Lc0sQAE4AdsVYu16P149KJzHrCo9H40yvmehflOcZIbDtgmYyASxjdjA0cw5FuEtAaJ+rNNmWLjshQ13JvAI5bTDb6jzKYzF7mDAcciMgPKANnRY2WBrAQ9fs=
