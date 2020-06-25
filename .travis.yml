@@ -8,15 +8,16 @@ env:
   - COVERAGE=0.057 BUILD_TARGET=./monolithic/ui
   global:
   - DOCKER_LOGIN=tamigit491
-  - secure: Ub5/P+HdoNihO01scau31iu5HUhToBF3dc4IN7ED8oux1PLm92+AyA5sYSN7AxME+X1PocPYJqwuLk3WRQR/DmWQF/pkHwagkrfXHWmnO4Jyd4OqUs1Pmw5BsAB/XfdgK+SYp+rCrbGjcHRvWONbq07XXBaaIViGR7lxXjwsW4kOYQNPQ8wJ+rXzVt/aRikgPLYRIp4iNETJdlanydWO6qx4HnpgiW1MM4Y1xPD44eH+8XXGHdzbn4oGrP+tEgxCwvFKiaNt+gONK0HShXumYlBILW3r/QHdATg3dlXO3fu6fHWHXULqsGmgexr7fGrKY8ytdvWlmqSwYp0SQp1MKfbDWBb0HLUkiqPd+y2zeKbymG4doVU5Cct8RwWQn9Pjg8QZCkrdjNz7IFqFi44UBp2AnQnoEdHzJtakT9f/fJVq/ZK7OeuQxtmbYsX//yThJ5buGI6oYXd1EzJvPJ82zNr1+g7dzHyNZCs8GL2gNtzBOJdgyVGDFbRu/2I3QFL4BCQsb/D+wP6X70s3e731oTVSuT4W2dMvObVFtJYV2wN1Fi5QQBe4RQ+MBgR03etF4J7uEgVeD6zyfxeY8g+Hvixxit9LWkXfdjMqZ9KqrAypNa0Gszy/NeIji19raylcfp0riU5woko+MAdQ8Vr2tN0Id8BHmcz2MUOMKTQNLBo=
+  - secure: EZ7SoRDfZclEY3nNEgVyUnP/wF7smHaJz9kAGBYL1zcnDZHKZQA1eaJbzG8TGiOKrqVw5R+iHrrc4DSTohMTswwakgPHOaBGk9MwruE+MYWV283/gn1qanRU125mLooeoR10SOr73hNWjJtTSNBNuL4JTbcj3Elap+wj/Hn2O+R/VQTTDy30PZ7yt/rPOdGEGieWu3EVcrK/UuCQFoXYDZEun7UmJAEGWYG8PtH+Q7IJJxgSo51cbN5ZU7M5bBVP8HCaG05tQIaFsMmO/oCnRBpsai4vt2QpaoKPsOIBILxepo9VSM3KLUyKaIl9l6AMxF5zL0OtzDGYi3U0+Fe3QA/GYDqqPSRg7ZZ9fCMvq/irfGWD1axXr9zvF4zy5PhFyeAqJ65Afy6ZGgh9mhf8/DF5MHUbGzY0En184rQTuZSwGrXafyPxLRpguDdgp5CZEj78kG45utQTcbyUvt/4zoGfy1Eyo/IDTSdHYDrzI6FxStDjHMQz6cJZ12Btq9JplrjmoIOQTGNFMtMBZKVVCRQDE/6vOTVkosaJJ9mmn4E5pJUyOggHgLaVlW8RGF7qa9cL/JEWjjKn/SHgwQKz5PdlAsAF8U54Bbm4oLI12KBOJWJ5lHDLN7z46LmvJCi/qtlq2eCzx7CyTSCAeif7ikGn9X54d/x5o/VCp/hwyTM=
 install:
-- ./gradlew clean jar
+- "./gradlew clean jar"
 script:
-- ./gradlew -p $BUILD_TARGET check
+- "./gradlew -p $BUILD_TARGET check"
 after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
 deploy:
   provider: script
-  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin ;"
+  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\"
+    --password-stdin ;"
   on:
     all_branches: true
