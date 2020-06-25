@@ -3,6 +3,9 @@ language: java
 jdk:
   - openjdk8 
 
+env:
+  - COVERAGE=0.31
+
 install:
   - ./gradlew clean jar
 
